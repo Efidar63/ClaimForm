@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">claim_listing_data_edit.claim_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back" class="Droxic\InsuranceClaimForm\Block\Adminhtml\Claim\Edit\BackButton"/>
+            <button name="delete" class="Droxic\InsuranceClaimForm\Block\Adminhtml\Claim\Edit\DeleteButton"/>
+            <button name="save" class="Droxic\InsuranceClaimForm\Block\Adminhtml\Claim\Edit\SaveButton"/>
+            <button name="save_and_continue" class="Droxic\InsuranceClaimForm\Block\Adminhtml\Claim\Edit\SaveAndContinueButton"/>
+        </buttons>
+        <namespace>claim_listing_data_edit</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>claim_listing_data_edit.claim_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="claim_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="*/*/save"/>
+        </settings>
+        <dataProvider name="claim_form_data_source" class="Droxic\InsuranceClaimForm\Model\DataProvider">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="claim_listing_data_edit">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">DRX Claim Table</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="entity_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Entity Id</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">entity_id</item>
+                    <item name="dataScope" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_user_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim User ID</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim_user_id</item>
+                    <item name="dataScope" xsi:type="string">claim_user_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_firstname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim Firstname</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">claim_firstname</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_lastname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim Lastname</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">claim_lastname</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_ins_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim Insurance ID</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">claim_ins_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_category">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim Category</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">claim_category</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_damage_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim Damage Description</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">claim_damage_description</item>
+                </item>
+            </argument>
+        </field>
+        <field name="claim_status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Claim Status</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">claim_status</item>
+                </item>
+            </argument>
+        </field>
+        <field name="created_at">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Created At</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">claim</item>
+                    <item name="dataScope" xsi:type="string">created_at</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

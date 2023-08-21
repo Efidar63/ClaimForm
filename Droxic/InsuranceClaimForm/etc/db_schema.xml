@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/db_schema.xml">
+        <table name="drx_claim" resource="default" engine="innodb" comment="DRX Claim Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity ID"/>
+        <column xsi:type="int" name="claim_user_id" padding="10" unsigned="true" nullable="false" comment="Claim User ID"/>
+        <column xsi:type="varchar" name="claim_firstname" nullable="false" length="100" comment="Claim Firstname"/>
+        <column xsi:type="varchar" name="claim_lastname" nullable="false" length="100" comment="Claim Lastname"/>
+        <column xsi:type="varchar" name="claim_ins_id" nullable="false" length="20" comment="Claim Insurance ID"/>
+        <column xsi:type="int" name="claim_category" padding="10" unsigned="true" nullable="false" comment="Claim Category"/>
+        <column xsi:type="text" name="claim_damage_description" nullable="false" comment="Claim Damage Description"/>
+        <column xsi:type="int" name="claim_status" padding="10" unsigned="true" nullable="false" comment="Claim Status"/>
+        <column xsi:type="timestamp" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+        <column name="entity_id"/>
+        </constraint>
+    </table>
+    <table name="sales_order_grid" resource="sales" engine="innodb" comment="Sales Order">
+        <column xsi:type="varchar" name="insurance_id" nullable="true" length="30" comment="Insurance ID"/>
+    </table>
+</schema>

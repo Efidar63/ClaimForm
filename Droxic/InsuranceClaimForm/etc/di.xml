@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="Droxic\InsuranceClaimForm\Model\ResourceModel\Claim\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">drx_claim</argument>
+            <argument name="resourceModel" xsi:type="string">Droxic\InsuranceClaimForm\Model\ResourceModel\Claim\Collection</argument>
+        </arguments>
+    </virtualType>
+     <type name="Droxic\InsuranceClaimForm\Model\ResourceModel\Order\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_order_grid</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+        <argument name="collections" xsi:type="array">
+            <item name="claim_listing_data_source" xsi:type="string">Droxic\InsuranceClaimForm\Model\ResourceModel\Claim\Grid\Collection</item>
+        </argument>
+    </arguments>
+</type>
+
+</config>

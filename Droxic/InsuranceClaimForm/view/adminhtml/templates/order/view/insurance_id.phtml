@@ -1,0 +1,13 @@
+<?php $insuranceId = $block->getInsuranceId(); ?>
+    <?php if ($insuranceId): ?>
+
+<tr>
+    <th>
+        <?= $block->escapeHtml(__('Insurance ID')) ?>
+    </th>
+    <td>
+        <?= $block->escapeHtml($insuranceId) ?>   
+    </td>
+</tr>
+
+<?php endif; ?>

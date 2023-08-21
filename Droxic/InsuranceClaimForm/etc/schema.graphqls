@@ -1,0 +1,25 @@
+type Query {
+    getClaimStatus (
+        firstname: String!
+        lastname: String!
+        insuranceId: String!
+    ): ClaimStatus @resolver(class: "Droxic\\InsuranceClaimForm\\Model\\Resolver\\GetClaimStatus")
+}
+
+type ClaimStatus @doc(description: "Efi is learning GraphQL") {
+    status: String!
+}
+
+type Mutation {
+  updateClaimStatus(
+    firstname: String!
+    lastname: String!
+    insuranceId: String!
+    category: String!
+    damagedescription: String!
+  ): ClaimStatus @resolver(class: "Droxic\\InsuranceClaimForm\\Model\\Resolver\\UpdateClaimStatus")
+}
+
+
+
+

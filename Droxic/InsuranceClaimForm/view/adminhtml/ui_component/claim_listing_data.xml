@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="provider" xsi:type="string">claim_listing_data.claim_listing_data_source</item>
+            </item>
+        </argument>
+        <settings>
+        <spinner>spinner_columns</spinner>
+        <deps>
+            <dep>claim_listing_data.claim_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="claim_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">entity_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Droxic_InsuranceClaimForm::listing</aclResource>
+       <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="claim_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar>
+        <!-- integrates the Filters component -->
+        <filters name="listing_filters" />
+    </listingToolbar>
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+        <column name="entity_id" sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID</label>
+            </settings>
+         </column>
+         <column name="claim_user_id" sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Claim User ID</label>
+            </settings>
+        </column>
+        <column name="claim_firstname"  sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Claim First Name</label>
+            </settings>
+        </column>
+        <column name="claim_lastname"  sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Claim Last Name</label>
+            </settings>
+        </column>
+        <column name="claim_ins_id"  sortOrder="10">
+            <settings>
+                <filter>int</filter>
+                <label translate="true">Claim Ins ID</label>
+            </settings>
+        </column>
+        <column name="claim_category"  sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Claim Category</label>
+            </settings>
+        </column>
+        <column name="claim_damage_description"  sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Claim Damage Description</label>
+            </settings>
+        </column>
+        <column name="claim_status"  sortOrder="10">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Claim Status</label>
+            </settings>
+        </column>
+        <column name="created_at"  sortOrder="40">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+       <actionsColumn name="actions" class="Droxic\InsuranceClaimForm\Ui\Component\Listing\Columns\Actions">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="indexField" xsi:type="string">entity_id</item>
+                    <item name="sortOrder" xsi:type="number">200</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>

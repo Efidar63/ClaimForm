@@ -1,0 +1,6 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Droxic_InsuranceClaimForm::drx" title="DRX" module="Droxic_InsuranceClaimForm" sortOrder="50" resource="Droxic_InsuranceClaimForm::drx" />
+        <add id="Droxic_InsuranceClaimForm::claims" title="Claims" module="Droxic_InsuranceClaimForm" sortOrder="10" parent="Droxic_InsuranceClaimForm::drx" resource="Droxic_InsuranceClaimForm::drx" action="claims/insuranceClaim/index"/>
+    </menu>
+</config>

@@ -30,9 +30,6 @@ class OrderSaveAfter implements ObserverInterface
         if ($affiliateId = $this->cookieManager->getCookie('affiliate_id')) {
             $order->setData('affiliate_id', $affiliateId);
         }
-        $order->setData('affiliate_id', "ddddd");
         $order->getResource()->saveAttribute($order, "affiliate_id");
-        
-       
     }
 }

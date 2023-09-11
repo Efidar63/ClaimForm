@@ -1,0 +1,46 @@
+<?php
+$startDate = isset($_POST['start_date']) ? $_POST['start_date'] : '';
+$endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
+?>
+<div>
+    <form method="GET" action="<?= $block->getFormUrl()?>">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="<?php echo $startDate; ?>">
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="<?php echo $endDate; ?>">
+        
+        <select name="affiliate_id" id="affiliate_id">
+            <?php foreach ($block->getAffiliateIds() as $id):?>
+                <option value="<?= $id['affiliate_id']?>"><?= $id['affiliate_id']?></option>
+            <?php endforeach;?>
+  
+        </select>
+
+        <input type="hidden" value="<?= $block->getFormKey()?>"  name="form_key">
+        <input type="submit" value="Show Report">
+    </form>
+</div>
+<div class="affiliate_orders">
+<?php $orders = $block->getReport() ?>
+<?php if ($orders):?>
+    <h2>Orders:</h2>
+        <table id='affiliate_orders_table'>
+            <tr>
+                <th>Order ID</th>
+                <th>Increment ID</th>
+                <th>Creation Date</th>
+                <th>Total Amount</th>
+            </tr>
+    <?php foreach ($orders as $order):?>
+            <tr>
+                <td><?= $order['entity_id'] ?></td>
+                <td><?= $order['increment_id']?></td>
+                <td><?= $order['created_at']?></td>
+                <td><?= $block->currencyFormatter($order['grand_total'])?></td>
+            </tr>
+    <?php endforeach;?>
+    
+        </table>
+<?php endif;?>
+</div>

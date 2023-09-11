@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Droxic_OrderReport::drx_order_report" title="Affiliate Report" translate="title" module="Droxic_OrderReport" parent="Magento_Reports::report_salesroot"  sortOrder="60" resource="Droxic_OrderReport::drx_order_report" action="drx_order_report/report/index"/>
+</menu>
+</config>
+

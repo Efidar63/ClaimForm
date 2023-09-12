@@ -21,6 +21,29 @@ $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
         <input type="submit" value="Show Report">
     </form>
 </div>
+<style>
+    /* Tablo stilleri */
+    #affiliate_orders_table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #affiliate_orders_table th,
+    #affiliate_orders_table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    #affiliate_orders_table th {
+        background-color: #f2f2f2;
+    }
+    .affiliate_orders .custom-column {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+</style>
 <div class="affiliate_orders">
 <?php $orders = $block->getReport() ?>
 <?php if ($orders):?>
@@ -32,6 +55,7 @@ $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
                 <th>Creation Date</th>
                 <th>Total Amount</th>
             </tr>
+    
     <?php foreach ($orders as $order):?>
             <tr>
                 <td><?= $order['entity_id'] ?></td>
@@ -39,8 +63,19 @@ $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
                 <td><?= $order['created_at']?></td>
                 <td><?= $block->currencyFormatter($order['grand_total'])?></td>
             </tr>
+            
     <?php endforeach;?>
-    
+    <tr>
+                <td class="custom-column" colspan="4">New Row 1</td>
+            </tr>
+
+            <tr>
+                <td class="custom-column" colspan="4">New Row 2</td>
+            </tr>
+
+            <tr>
+                <td class="custom-column" colspan="4">New Row 3</td>
+            </tr>
         </table>
 <?php endif;?>
 </div>

@@ -1,6 +1,7 @@
 <?php
 $startDate = isset($_POST['start_date']) ? $_POST['start_date'] : '';
 $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
+$totals = 0;
 ?>
 <div>
     <form method="GET" action="<?= $block->getFormUrl()?>">
@@ -42,12 +43,13 @@ $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
     .affiliate_orders .custom-column {
         border: 1px solid #ddd;
         padding: 8px;
-        text-align: left;
+        text-align: right;
+    }
 </style>
 <div class="affiliate_orders">
 <?php $orders = $block->getReport() ?>
 <?php if ($orders):?>
-    <h2>Orders:</h2>
+    <h3>Orders:</h3>
         <table id='affiliate_orders_table'>
             <tr>
                 <th>Order ID</th>
@@ -63,19 +65,21 @@ $endDate = isset($_POST['end_date']) ? $_POST['end_date'] : '';
                 <td><?= $order['created_at']?></td>
                 <td><?= $block->currencyFormatter($order['grand_total'])?></td>
             </tr>
-            
+            <?php $totals += $order['grand_total'] ?>
     <?php endforeach;?>
     <tr>
-                <td class="custom-column" colspan="4">New Row 1</td>
-            </tr>
+        <td class="custom-column" colspan="4">
+            <?= $block->currencyFormatter((float)$totals) ?>
+        </td>
+    </tr>
+    <tr>
+        <td class="custom-column" colspan="4"><?= ($block->getAffiliatePercentage()) ? $block->getAffiliatePercentage() . '%' : '' ?>
+        </td>
+    </tr>
+    <tr>
+        <td class="custom-column" colspan="4"><?= $block->getAffiliateCommission($totals)?></td>
+    </tr>
 
-            <tr>
-                <td class="custom-column" colspan="4">New Row 2</td>
-            </tr>
-
-            <tr>
-                <td class="custom-column" colspan="4">New Row 3</td>
-            </tr>
         </table>
-<?php endif;?>
+    <?php endif;?>
 </div>

@@ -4,7 +4,7 @@
     		<tab id="droxic" translate="label" sortOrder="999">
 			<label>Droxic</label>
 		</tab>
-        <section id="droxic" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="droxic_config" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
             <label>Droxic Configuration</label>
             <tab>droxic</tab>
             <resource>Droxic_OrderReport::config</resource>

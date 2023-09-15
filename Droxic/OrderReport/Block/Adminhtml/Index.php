@@ -6,6 +6,7 @@ namespace Droxic\OrderReport\Block\Adminhtml;
 use Droxic\OrderReport\Model\Model;
 use Magento\Backend\Block\Template;
 use Magento\Framework\Pricing\Helper\Data as PriceHelper;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 
 class Index extends Template
 {
@@ -15,6 +16,8 @@ class Index extends Template
 
     protected $formKey;
     protected $priceHelper;
+
+    protected $scopeConfig;
 
     /**
      * Constructor
@@ -28,6 +31,7 @@ class Index extends Template
         Model $model, 
         \Magento\Framework\Data\Form\FormKey $formKey,
         PriceHelper $priceHelper, // PriceHelper'ı ekleyin
+        ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
         $this->model = $model; 
@@ -35,6 +39,7 @@ class Index extends Template
         $this->formKey = $formKey;
         parent::__construct($context, $data);
         $this->priceHelper = $priceHelper;
+        $this->scopeConfig = $scopeConfig;
     }
     
 
@@ -64,8 +69,26 @@ class Index extends Template
         return  $this->model->getAffiliateIds();
     }
 
-    public function currencyFormatter($value)
+    public function currencyFormatter($value, $sign = true)
     {
-        return $this->priceHelper->currency($value, true, false);
+        return $this->priceHelper->currency($value, $sign, false);
+    }
+    public function getAffiliatePercentage()
+    {
+         return  $this->scopeConfig->getValue(
+            "droxic_config/general/percentage",
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+         );
+    }
+
+    public function getAffiliateCommission($totals)
+    {
+        if ($percentage = $this->getAffiliatePercentage()) {
+
+            $commission = (float)($percentage/100* (float)$totals);
+            return $this->currencyFormatter($commission);
+
+        }
+        return $this->currencyFormatter($totals);
     }
 }
